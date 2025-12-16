@@ -92,6 +92,39 @@ webView.loadUrl("file:///android_asset/index.html");
 
 ---
 
+## Supported words & example sentences
+
+**Built-in words (word-level gestures):**
+
+- HOME
+- PERSON
+- TIME
+- YOU
+- NAMASTE
+- HELLO
+- GOODBYE
+- THANK_YOU
+- YES
+- NO
+
+**Alphabet support:** A–Z (each letter has its own gesture; Learn mode is ideal for spelling and practice).
+
+**Example sentences (use these or similar short phrases):**
+
+- HELLO PERSON, THANK YOU
+- NAMASTE, YOU HOME?
+- NO TIME, GOODBYE
+- YES, TIME HOME
+- YOU PERSON? YES/NO
+- THANK YOU, GOODBYE YOU
+- NO HOME, NO TIME
+
+> [!NOTE]
+> Words that are not available as pre-built word animations will be spelled out letter-by-letter using the alphabet gestures.
+> For best results keep sentences short and separate words with spaces or commas.
+
+---
+
 ## Project structure
 
 - `src/pages/` — `Convert`, `Learn` pages
