@@ -107,10 +107,3 @@ webView.loadUrl("file:///android_asset/index.html");
 - WebView: If audio permissions or getUserMedia behaves differently on your device, refer to `ANDROID_GUIDE.md` for workarounds.
 - If you see layout issues on very small screens, try increasing viewport height or testing with `max-w-md` container constraints (app is optimized for small-width mobile screens).
 
----
-
-## License & Contact
-
-This project was developed for Smart India Hackathon 2025. If you'd like to contribute, open an issue or reach out to the maintainer.
-
-[Add license information here]
