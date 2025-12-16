@@ -1,5 +1,7 @@
 import { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { useAvatarRenderer } from "@/hooks/use-avatar-renderer";
 import { AlphabetKeyboard } from "@/components/AlphabetKeyboard";
 
@@ -55,9 +57,11 @@ export default function Learn() {
         }
     };
 
+    const navigate = useNavigate();
+
     return (
         <div className="flex h-full flex-col bg-[#917CF5] p-2 sm:p-4">
-            <div className="mx-auto grid h-full w-full max-w-md grid-rows-[minmax(400px,1fr)_auto] gap-2 sm:gap-4">
+            <div className="mx-auto grid h-full w-full max-w-md grid-rows-[minmax(400px,1fr)_auto_auto] gap-2 sm:gap-4">
                 {/* 3D Avatar Display Section */}
                 <Card className="flex flex-col overflow-hidden border-2 border-[#032068] bg-white py-0">
                     <CardContent className="flex flex-1 flex-col p-0">
@@ -154,6 +158,18 @@ export default function Learn() {
                         />
                     </CardContent>
                 </Card>
+
+                {/* Page Switch Button */}
+                <div className="flex justify-center">
+                    <div className="mx-auto w-full">
+                        <Button
+                            onClick={() => navigate("/")}
+                            className="h-12 w-full rounded-xl border-2 border-[#0014D8] bg-[#818CFF] text-white shadow-[0_4px_0_#0014D8] transition-all hover:translate-y-0.5 hover:bg-[#6b78ff] hover:shadow-[0_2px_0_#0014D8] active:translate-y-1 active:shadow-none"
+                        >
+                            Switch to Convert
+                        </Button>
+                    </div>
+                </div>
             </div>
         </div>
     );

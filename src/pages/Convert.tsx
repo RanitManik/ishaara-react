@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Mic, Square, Trash2, Play } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
@@ -208,9 +209,11 @@ export default function Convert() {
         }, 100);
     };
 
+    const navigate = useNavigate();
+
     return (
         <div className="flex h-full flex-col bg-[#917CF5] p-4">
-            <div className="mx-auto grid h-full w-full max-w-md grid-rows-[1fr_auto] gap-4">
+            <div className="mx-auto grid h-full w-full max-w-md grid-rows-[1fr_auto_auto] gap-4">
                 {/* 3D Avatar Display Section - Takes remaining space */}
                 <Card className="flex flex-col overflow-hidden border-2 border-[#032068] bg-white py-0">
                     <CardContent className="flex flex-1 flex-col p-0">
@@ -340,7 +343,7 @@ export default function Convert() {
                                 }
                             }}
                             placeholder="Tap mic to speak or type here..."
-                            className="h-32 resize-none rounded-xl border-2 border-[#0014D8] bg-white p-4 text-lg font-medium wrap-break-word text-[#032068] placeholder:text-[#032068]/40 focus-visible:border-[#0014D8] focus-visible:ring-0"
+                            className="h-20 resize-none rounded-xl border-2 border-[#0014D8] bg-white p-4 text-lg font-medium wrap-break-word text-[#032068] placeholder:text-[#032068]/40 focus-visible:border-[#0014D8] focus-visible:ring-0"
                         />
 
                         <Button
@@ -353,6 +356,18 @@ export default function Convert() {
                         </Button>
                     </CardContent>
                 </Card>
+
+                {/* Page Switch Button */}
+                <div className="flex justify-center">
+                    <div className="mx-auto w-full">
+                        <Button
+                            onClick={() => navigate("/learn")}
+                            className="h-12 w-full rounded-xl border-2 border-[#0014D8] bg-[#818CFF] text-white shadow-[0_4px_0_#0014D8] transition-all hover:translate-y-0.5 hover:bg-[#6b78ff] hover:shadow-[0_2px_0_#0014D8] active:translate-y-1 active:shadow-none"
+                        >
+                            Switch to Learn
+                        </Button>
+                    </div>
+                </div>
             </div>
         </div>
     );

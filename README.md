@@ -1,31 +1,116 @@
+# Ishaara (React) — Final Web + WebView Build
+
+A lightweight, mobile-friendly web app that converts speech or typed text into Indian Sign Language (ISL) gestures using a 3D avatar. This is the final React implementation produced during Smart India Hackathon 2025 and is tailored for embedding into Android WebViews.
+
+✅ **Status:** Final / Ready for WebView embedding
+
 ---
 
-"HELLO PERSON, THANK YOU"
+## Quick features
 
-        (A polite greeting to someone.)
+- Speech-to-sign using the Web Speech API (mic permission required)
+- Text-to-sign conversion with single-click animation playback
+- Learn mode with an interactive alphabet keyboard
+- 3D avatar animations (Three.js) with tuned speed and pause controls
+- Small, responsive UI optimized for mobile screens and WebView
+- In-page switch buttons to toggle between **Convert** and **Learn** (no top nav required)
 
-    "NAMASTE, YOU HOME?"
+---
 
-        (Asking someone: "Hello, are you home?" or "Are you going home?")
+## Tech stack
 
-    "NO TIME, GOODBYE"
+- React + Vite
+- React Router DOM
+- TypeScript
+- Tailwind CSS
+- Three.js for 3D avatar rendering
 
-        (Meaning: "I don't have time, bye.")
+---
 
-    "YES, TIME HOME"
+## Getting started (development)
 
-        (Meaning: "Yes, it is time to go home.")
+1. Clone and install:
 
-Abstract/Testing Sentences
+```bash
+git clone https://github.com/RanitManik/ishaara-react.git
+cd ishaara-react
+npm install
+```
 
-    "YOU PERSON? YES/NO"
+2. Run dev server:
 
-        (Asking: "Are you a person? Yes or No?" - Good for testing logic.)
+```bash
+npm run dev
+```
 
-    "THANK YOU, GOODBYE YOU"
+3. Open the app at http://localhost:5173
 
-        (A polite way to end an interaction.)
+Note: Use a modern browser (Chromium, Chrome, or WebView with proper permission handling) to test microphone features.
 
-    "NO HOME, NO TIME"
+---
 
-        (Meaning: "I have no home and no time.")
+## Building for production (WebView-ready)
+
+1. Build the production bundle:
+
+```bash
+npm run build
+```
+
+2. Preview the production build locally (optional):
+
+```bash
+npm run preview
+```
+
+3. The output folder (by default `dist`) contains the static files ready to be embedded into an Android app's `assets` or served from a static hosting provider.
+
+---
+
+## Android WebView notes
+
+- See `ANDROID_GUIDE.md` for full details. Key reminders:
+  - Enable JavaScript and DOM storage in your WebView.
+  - Request and handle microphone permission (`RECORD_AUDIO`).
+  - Some WebView versions may require explicit `getUserMedia` handling; test on your target Android API levels.
+
+Example WebView setup (Java):
+
+```java
+WebView webView = findViewById(R.id.webview);
+webView.getSettings().setJavaScriptEnabled(true);
+webView.getSettings().setDomStorageEnabled(true);
+webView.loadUrl("file:///android_asset/index.html");
+```
+
+---
+
+## How to use
+
+- Convert: Tap the mic to speak or type text, then press "Convert to Sign Language". The avatar will animate the signs.
+- Learn: Type letters on the screen keyboard and press Enter to see the avatar perform the signs. Use the "Switch" button at the bottom to toggle pages while testing in a browser.
+
+---
+
+## Project structure
+
+- `src/pages/` — `Convert`, `Learn` pages
+- `src/components/` — UI components and small widgets
+- `src/hooks/` — avatar renderer and helpers
+- `src/lib/Animations/` — encoded animation sequences per alphabet/word
+
+---
+
+## Notes & Troubleshooting
+
+- Microphone: Browsers require user gesture and permissions; on Android WebView you must request `RECORD_AUDIO` at runtime.
+- WebView: If audio permissions or getUserMedia behaves differently on your device, refer to `ANDROID_GUIDE.md` for workarounds.
+- If you see layout issues on very small screens, try increasing viewport height or testing with `max-w-md` container constraints (app is optimized for small-width mobile screens).
+
+---
+
+## License & Contact
+
+This project was developed for Smart India Hackathon 2025. If you'd like to contribute, open an issue or reach out to the maintainer.
+
+[Add license information here]
